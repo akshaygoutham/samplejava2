@@ -45,17 +45,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up SSH key for EC2
-      run: |
-        echo "${{ secrets.EC2_KEY }}" | base64 --decode > private-key.pem
-        chmod 600 private-key.pem
     
-    - name: Verify SSH key file
-      run: ls -l private-key.pem
-    
-    - name: Check permissions on SSH key
-      run: ls -l private-key.pem
-  
     - name: SSH into EC2 and deploy
       uses: appleboy/ssh-action@v0.1.8
       with:
