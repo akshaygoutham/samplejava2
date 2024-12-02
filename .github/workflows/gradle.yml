@@ -49,11 +49,13 @@ jobs:
     - name: Push Docker Image
       run: |
         docker push ${{ secrets.DOCKER_USERNAME }}/samplejava2:v1.0 
+        
     # Deployment of Docker images
-    deploy:
-    needs: build-and-push
-    runs-on: ubuntu-latest
-    steps:
+  deploy:
+     needs: build
+     runs-on: ubuntu-latest
+    
+     steps:
       - name: SSH into EC2 and deploy
         uses: appleboy/ssh-action@v0.1.8
         with:
