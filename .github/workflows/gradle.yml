@@ -51,7 +51,7 @@ jobs:
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ubuntu
-        key: ${{ github.workspace }}/private-key.pem
+        key: ${{ secrets.EC2_KEY }}
         script: |
           docker pull akshaygoutham3277/samplejava2:v1.0
           docker stop running_container || true
